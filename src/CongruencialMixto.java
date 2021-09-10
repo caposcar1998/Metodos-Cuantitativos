@@ -65,7 +65,7 @@ public class CongruencialMixto {
     public ArrayList<String> checkHullDobell() {
         ArrayList<String> warnings = new ArrayList<>();
 
-        // Sea cy mprimos relativo  (el máximo común divisor entero cy mes 1)
+        // Sea cy mprimos relativo (el máximo común divisor entero cy mes 1)
         if (!areRelativePrimes(c, m)) {
             warnings.add("Condición 1: c y m no son primos relativos");
         }
@@ -84,12 +84,12 @@ public class CongruencialMixto {
         return warnings;
     }
 
-    // Si qes un número primo que divide a m; entonces, q divide a (a-1)
+    // Si q es un número primo que divide a m; entonces, q divide a (a-1)
     public boolean hullDobellCondition2() {
         int smallest = Math.min(m, a - 1);
         for (int q = 0; q <= smallest; q++) {
             if (isPrime(q)) {
-                if (m % q == 0 && (a - 1) % q == 0){
+                if (m % q == 0 && (a - 1) % q == 0) {
                     return true;
                 }
             }
@@ -113,7 +113,7 @@ public class CongruencialMixto {
     }
 
     public boolean areRelativePrimes(int num1, int num2) {
-        // 0 no es coprimo con ningún número
+        // 0 no es primo relativo con ningún número
         if (num1 == 0 || num2 == 0) {
             return false;
         }
