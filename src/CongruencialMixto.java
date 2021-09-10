@@ -1,21 +1,21 @@
 import java.util.ArrayList;
 
 public class CongruencialMixto {
-    private int x0, a, c, m;
+    private int seed, a, c, m;
 
-    public CongruencialMixto(int x0, int a, int c, int m) {
-        this.x0 = x0;
+    public CongruencialMixto(int seed, int a, int c, int m) {
+        this.seed = seed;
         this.a = a;
         this.c = c;
         this.m = m;
     }
 
-    public int getX0() {
-        return x0;
+    public int getSeed() {
+        return seed;
     }
 
-    public void setX0(int x0) {
-        this.x0 = x0;
+    public void setSeed(int seed) {
+        this.seed = seed;
     }
 
     public int getA() {
@@ -43,10 +43,24 @@ public class CongruencialMixto {
     }
 
     public void run() {
-        System.out.println(checkHullDobell());
+        System.out.println("Hull-Dobell: " + checkHullDobell());
+        System.out.println("Resultado: " + generate(8));
     }
 
-    public
+    public ArrayList<RandomNumber> generate(int iterations) {
+        ArrayList<RandomNumber> randomNums = new ArrayList<>();
+        for (int i = 0; i < iterations; i++) {
+            RandomNumber randomNumber = new RandomNumber();
+            randomNumber.setSeed(seed);
+            randomNumber.setIteration(i);
+            int generator = ((a * seed) + c) % m;
+            randomNumber.setRandomNum(generator);
+            randomNumber.setActualRandomNum(generator / Double.valueOf(m));
+            seed = generator;
+            randomNums.add(randomNumber);
+        }
+        return randomNums;
+    }
 
     public ArrayList<String> checkHullDobell() {
         ArrayList<String> warnings = new ArrayList<>();
