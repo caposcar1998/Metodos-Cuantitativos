@@ -65,7 +65,7 @@ public class CongruencialMixto {
     public ArrayList<String> checkHullDobell() {
         ArrayList<String> warnings = new ArrayList<>();
 
-        // Sea cy mprimos relativo (el máximo común divisor entero cy mes 1)
+        // Sea c y m primos relativos (el máximo común divisor entero c y m es 1)
         if (!areRelativePrimes(c, m)) {
             warnings.add("Condición 1: c y m no son primos relativos");
         }
