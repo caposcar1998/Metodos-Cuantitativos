@@ -119,7 +119,7 @@ public class CongruencialMixto {
         }
         // Se revisarán todos los posibles números hasta alcanzar el más chico
         int smallest = Math.min(num1, num2);
-        // Revisa si los números son ambos divisibles por el mismo número
+        // Revisa si los números son ambos divisibles por el mismo número además de 1
         for (int i = 2; i <= smallest; i++) {
             // Si lo son, no son primos relativos
             if (num1 % i == 0 && num2 % i == 0) {
