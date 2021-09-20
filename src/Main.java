@@ -9,6 +9,9 @@ public class Main {
         System.out.println("Congruencia mixta");
         CongruencialMixto cm = new CongruencialMixto(4, 5, 7, 8);
         cm.run();
+        System.out.println("Generador Multiplicativo");
+        GeneradorMultiplicativo gm = new GeneradorMultiplicativo(5,5,32);
+        gm.run();
 
     }
 }
