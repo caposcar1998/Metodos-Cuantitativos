@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.commons.math3.stat.inference.ChiSquareTest;
 
 public class ChiCuadrada {
     private List<Double> nums;
@@ -71,6 +72,13 @@ public class ChiCuadrada {
             chiCuadrada += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
         }
         System.out.println(chiCuadrada);
+        double[] expected = new double[4];
+        long[] observed = new long[4];
+        for (int i = 0; i < classes.size(); i++) {
+            expected[i] = feEsperado;
+            observed[i] = classes.get(i).getF0Abs();
+        }
+        System.out.println(new ChiSquareTest().chiSquare(expected, observed));
     }
 
     public int countItemsInClassRange(double start, double end) {
