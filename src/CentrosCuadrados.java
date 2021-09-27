@@ -9,8 +9,8 @@ public class CentrosCuadrados {
         this.iteracions=iteracions;
     }
 
-    public void run(){
-        System.out.println(metodo(seed,iteracions));
+    public ArrayList<RandomNumber> run(){
+        return metodo(seed,iteracions);
     }
 
     public  ArrayList<RandomNumber>  metodo(int seed, int iteracions){

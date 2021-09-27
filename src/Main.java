@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        /*
         System.out.println("Centros cuadrados");
         CentrosCuadrados cc = new CentrosCuadrados(3708,7);
         cc.run();
@@ -9,6 +10,10 @@ public class Main {
         System.out.println("Congruencia mixta");
         CongruencialMixto cm = new CongruencialMixto(4, 5, 7, 8);
         cm.run();
+        */
+        Page pg = new Page();
+        pg.run();
+
 
     }
 }
