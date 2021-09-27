@@ -18,7 +18,7 @@ public class Main {
         Page pg = new Page();
         pg.run();
 
-
+/*
         System.out.println("Generador Multiplicativo");
         GeneradorMultiplicativo gm = new GeneradorMultiplicativo(5, 5, 32);
         gm.run();
@@ -30,5 +30,9 @@ public class Main {
         } else {
             System.out.println("Chi cuadrada: Se rechaza hipótesis nula");
         }
+        */
+
     }
+
+
 }
