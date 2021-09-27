@@ -35,8 +35,7 @@ public class ChiCuadrada {
         double range = sortedNums.get(sortedNums.size() - 1)  - sortedNums.get(0);
         double k = Math.round(1 + (3.222 * Math.log10(nums.size())));
         double v = k - 1;
-        //double classRange = range / k;
-        double classRange = 1.5;
+        double classRange = range / k;
 
         ArrayList<ChiCuadradaClaseK> classes = new ArrayList<>();
 
@@ -51,19 +50,6 @@ public class ChiCuadrada {
             classStart = classEnd;
         }
 
-        // System.out.println(classes);
-
-        // Revisar si algunas clases tienen menos de 5, si es así, combinar
-        int classWithLessThan5;
-        do {
-            classWithLessThan5 = checkIfClassWithLessThan5(classes);
-            // -1 es que no encontró ninguna
-            if (classWithLessThan5 != -1) {
-                ChiCuadradaClaseK merged = mergeClasses(classes.get(classWithLessThan5 - 1), classes.get(classWithLessThan5));
-                classes = reassignClasses(classes, merged, classWithLessThan5 - 1, classWithLessThan5);
-                // System.out.println(classes);
-            }
-        } while(classWithLessThan5 != -1);
 
         // Mismo feEsperado para todos, porque es una distrib uniforme
         double feEsperado = (double) nums.size() / classes.size();
@@ -71,13 +57,15 @@ public class ChiCuadrada {
         for (ChiCuadradaClaseK cc: classes) {
             chiCuadrada += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
         }
-        System.out.println(chiCuadrada);
-        double[] expected = new double[4];
-        long[] observed = new long[4];
+        System.out.println("cc " + chiCuadrada);
+        double[] expected = new double[classes.size()];
+        long[] observed = new long[classes.size()];
         for (int i = 0; i < classes.size(); i++) {
             expected[i] = feEsperado;
             observed[i] = classes.get(i).getF0Abs();
         }
+        System.out.println("classes " + classes);
+        System.out.println(expected[0]);
         System.out.println(new ChiSquareTest().chiSquare(expected, observed));
     }
 

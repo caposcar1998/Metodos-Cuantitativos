@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        /*
         System.out.println("Centros cuadrados");
         CentrosCuadrados cc = new CentrosCuadrados(3708,7);
         cc.run();
@@ -12,12 +11,11 @@ public class Main {
         CongruenciaLineal cl = new CongruenciaLineal(4,5,7,8);
         cl.run();
         System.out.println("Congruencia mixta");
-        CongruencialMixto cm = new CongruencialMixto(4, 5, 7, 8);
+        CongruencialMixto cm = new CongruencialMixto(113, 7, 7, 160);
         cm.run();
         System.out.println("Generador Multiplicativo");
         GeneradorMultiplicativo gm = new GeneradorMultiplicativo(5,5,32);
         gm.run();
-        */
 
         Double[] testChi = {
                 8.223, 0.836, 2.634, 4.778, 0.406, 0.517, 2.330, 2.563, 0.511, 6.426,
@@ -27,8 +25,9 @@ public class Main {
                 1.064, 0.186, 2.782, 3.246, 5.587, 0.685, 1.725, 1.267, 1.702, 1.849,
         };
 
+        System.out.println(cm.run());
         List<Double> testChiList = Arrays.asList(testChi);
-        ChiCuadrada chi = new ChiCuadrada(testChiList);
+        ChiCuadrada chi = new ChiCuadrada(cm.run());
         chi.run();
     }
 }

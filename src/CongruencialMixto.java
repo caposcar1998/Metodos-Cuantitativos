@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CongruencialMixto {
     private int seed, a, c, m;
@@ -42,9 +44,9 @@ public class CongruencialMixto {
         this.m = m;
     }
 
-    public void run() {
+    public List<Double> run() {
         System.out.println("Hull-Dobell: " + checkHullDobell());
-        System.out.println("Resultado: " + generate(8));
+        return generate(8).stream().map(randomNumber -> randomNumber.actualRandomNum).collect(Collectors.toList());
     }
 
     public ArrayList<RandomNumber> generate(int iterations) {
