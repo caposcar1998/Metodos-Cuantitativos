@@ -49,7 +49,20 @@ public class ChiCuadrada {
             classes.add(ccClass);
             classStart = classEnd;
         }
+// System.out.println(classes);
 
+        // Revisar si algunas clases tienen menos de 5, si es así, combinar
+        int classWithLessThan5;
+        do {
+            classWithLessThan5 = checkIfClassWithLessThan5(classes);
+            // -1 es que no encontró ninguna
+            if (classWithLessThan5 != -1) {
+                ChiCuadradaClaseK merged = mergeClasses(classes.get(classWithLessThan5 - 1),
+                        classes.get(classWithLessThan5));
+                classes = reassignClasses(classes, merged, classWithLessThan5 - 1, classWithLessThan5);
+                // System.out.println(classes);
+            }
+        } while (classWithLessThan5 != -1);
 
         // Mismo feEsperado para todos, porque es una distrib uniforme
         double feEsperado = (double) nums.size() / classes.size();

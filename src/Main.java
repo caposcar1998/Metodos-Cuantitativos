@@ -27,7 +27,7 @@ public class Main {
 
         System.out.println(cm.run());
         List<Double> testChiList = Arrays.asList(testChi);
-        ChiCuadrada chi = new ChiCuadrada(cm.run());
+        ChiCuadrada chi = new ChiCuadrada(testChiList);
         chi.run();
     }
 }
