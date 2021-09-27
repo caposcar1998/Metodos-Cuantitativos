@@ -189,5 +189,3 @@ public class ChiCuadrada {
         }
     }
 }
-
-// http://www.disfrutalasmatematicas.com/datos/tabla-chi-cuadrado.html
