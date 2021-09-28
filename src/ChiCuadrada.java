@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ChiCuadrada {
     private List<Double> nums;
     private ArrayList<Double> sortedNums;
-    private double significance;
+    private double significance, chiSquare, chiSquareFromTable;
     HashMap<Double, HashMap<Integer, Double>> chiSquareTable;
 
     public ChiCuadrada(List<Double> nums, double significance) {
@@ -41,15 +41,30 @@ public class ChiCuadrada {
         this.significance = significance;
     }
 
+    public double getChiSquare() {
+        return chiSquare;
+    }
+
+    public void setChiSquare(double chiSquare) {
+        this.chiSquare = chiSquare;
+    }
+
+    public double getChiSquareFromTable() {
+        return chiSquareFromTable;
+    }
+
+    public void setChiSquareFromTable(double chiSquareFromTable) {
+        this.chiSquareFromTable = chiSquareFromTable;
+    }
+
     // true = hip nula no se rechaza, false = hip nula se rechaza
-    public boolean run() {
+    public double run() {
         sortedNums = new ArrayList<>(nums);
         Collections.sort(sortedNums);
 
         double range = sortedNums.get(sortedNums.size() - 1) - sortedNums.get(0);
-        double k = Math.round(1 + (3.222 * Math.log10(nums.size())));
-        int v = (int) (k - 1);
-        double classRange = range / k;
+        double k = Math.floor(1 + (3.222 * Math.log10(nums.size())));
+        double classRange = (double) Math.round(100 * range / k) / 100;
 
         ArrayList<ChiCuadradaClaseK> classes = new ArrayList<>();
 
@@ -64,33 +79,37 @@ public class ChiCuadrada {
             classStart = classEnd;
         }
 
-        // System.out.println(classes);
-
         // Revisar si algunas clases tienen menos de 5, si es así, combinar
         int classWithLessThan5;
         do {
             classWithLessThan5 = checkIfClassWithLessThan5(classes);
-            // -1 es que no encontró ninguna
-            if (classWithLessThan5 != -1) {
+            // -1 es que no encontró ninguna y 0 porque si es la primera clase, se trata diferente
+            if (classWithLessThan5 != -1 && classWithLessThan5 != 0) {
                 ChiCuadradaClaseK merged = mergeClasses(classes.get(classWithLessThan5 - 1),
                         classes.get(classWithLessThan5));
                 classes = reassignClasses(classes, merged, classWithLessThan5 - 1, classWithLessThan5);
                 // System.out.println(classes);
             }
-        } while (classWithLessThan5 != -1);
+        } while (classWithLessThan5 != -1 && classWithLessThan5 != 0);
+
+        // Ultima clase por revisar
+        if (classWithLessThan5 == 0) {
+            ChiCuadradaClaseK merged = mergeClasses(classes.get(0), classes.get(1));
+            classes = reassignClasses(classes, merged, 0, 1);
+        }
 
         // Mismo feEsperado para todos, porque es una distrib uniforme
-        double feEsperado = (double) nums.size() / classes.size();
-        double chiCuadrada = 0;
+        double feEsperado;
+        chiSquare = 0;
         for (ChiCuadradaClaseK cc : classes) {
-            chiCuadrada += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
+            feEsperado = nums.size() * (cc.getClassEnd() - cc.getClassStart());
+            chiSquare += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
         }
         readCsv();
-        double tableChiSquare = chiSquareTable.get(significance).get(v);
-        System.out.println("Chi cuadrada calculada: " + chiCuadrada);
-        System.out.println("Chi cuadrada de table: " + tableChiSquare);
+        int v = classes.size() - 1;
+        chiSquareFromTable = chiSquareTable.get(significance).get(v);
 
-        return chiCuadrada < tableChiSquare;
+        return chiSquare;
     }
 
     public int countItemsInClassRange(double start, double end) {
@@ -112,7 +131,7 @@ public class ChiCuadrada {
     }
 
     public int checkIfClassWithLessThan5(ArrayList<ChiCuadradaClaseK> classes) {
-        for (int i = classes.size() - 1; i > 0; i--) {
+        for (int i = classes.size() - 1; i >= 0; i--) {
             if (classes.get(i).getF0Abs() < 5) {
                 return i;
             }
