@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.commons.math3.stat.inference.ChiSquareTest;
 
 public class ChiCuadrada {
     private List<Double> nums;
@@ -100,15 +101,26 @@ public class ChiCuadrada {
 
         // Mismo feEsperado para todos, porque es una distrib uniforme
         double feEsperado;
+        double[] expected = new double[classes.size()];
         chiSquare = 0;
+        int j = 0;
         for (ChiCuadradaClaseK cc : classes) {
             feEsperado = nums.size() * (cc.getClassEnd() - cc.getClassStart());
+            expected[j] = feEsperado;
             chiSquare += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
+            j++;
         }
         readCsv();
         int v = classes.size() - 1;
         chiSquareFromTable = chiSquareTable.get(significance).get(v);
 
+        long[] observed = new long[classes.size()];
+        for (int i = 0; i < classes.size(); i++) {
+            observed[i] = classes.get(i).getF0Abs();
+        }
+        System.out.println("classes " + classes);
+        System.out.println("De tabla: " + new ChiSquareTest().chiSquare(expected, observed));
+        System.out.println("Calculado: " + chiSquare);
         return chiSquare;
     }
 
