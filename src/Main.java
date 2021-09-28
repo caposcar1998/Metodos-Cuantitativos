@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Main {
         System.out.println("Hull-Dobell: " + cm.checkHullDobell());
         cm.run(8);
         */
+
         Page pg = new Page();
         pg.run();
 
