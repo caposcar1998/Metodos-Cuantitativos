@@ -3,6 +3,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class GeneradorMultiplicativoPage {
@@ -40,6 +42,62 @@ public class GeneradorMultiplicativoPage {
         aGMPoner.setBounds(100,325,200,40);
         mGMTexto.setBounds(100,400,200,40);
         mGMPoner.setBounds(100,425,200,40);
+
+        semillaGMPoner.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = semillaGMPoner.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    semillaGMPoner.setEditable(true);
+                    semillaGMTexto.setText("");
+                } else {
+                    semillaGMPoner.setEditable(false);
+                    semillaGMTexto.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
+
+        iteracionGMPoner.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = iteracionGMPoner.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    iteracionGMPoner.setEditable(true);
+                    iteracionGMTexto.setText("");
+                } else {
+                    iteracionGMPoner.setEditable(false);
+                    iteracionGMTexto.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
+
+        aGMPoner.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = aGMPoner.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    aGMPoner.setEditable(true);
+                    aGMTexto.setText("");
+                } else {
+                    aGMPoner.setEditable(false);
+                    aGMTexto.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
+
+        mGMPoner.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = mGMPoner.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    mGMPoner.setEditable(true);
+                    mGMTexto.setText("");
+                } else {
+                    mGMPoner.setEditable(false);
+                    mGMTexto.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
 
         //Tabla
         model.addColumn("No. iteración");

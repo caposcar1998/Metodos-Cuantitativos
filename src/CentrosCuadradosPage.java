@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class CentrosCuadradosPage  {
@@ -30,6 +32,34 @@ public class CentrosCuadradosPage  {
         semillaCcPoner.setBounds(100,125,200,40);
         iteracionCcPoner.setBounds(100,225,200,40);
         regresar.setBounds(10, 10, 80, 30);
+
+        semillaCcPoner.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = semillaCcPoner.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    semillaCcPoner.setEditable(true);
+                    semillaCcTexto.setText("");
+                } else {
+                    semillaCcPoner.setEditable(false);
+                    semillaCcTexto.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
+
+        iteracionCcPoner.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = iteracionCcPoner.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    iteracionCcPoner.setEditable(true);
+                    iteracionCcTexto.setText("");
+                } else {
+                    iteracionCcPoner.setEditable(false);
+                    iteracionCcTexto.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
 
         //Tabla
         model.addColumn("No. iteración");
