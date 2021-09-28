@@ -12,6 +12,9 @@ public class Page {
     JLabel tituloProyecto= new JLabel("Proyecto 1 - Métodos Cuantitativos y Simulación", SwingConstants.CENTER);
     JLabel tituloNumeros = new JLabel("Simulador de Números Random", SwingConstants.CENTER);
     JLabel labelEquipo = new JLabel("Miembros del equipo: Oscar Contreras, Jorge Akio Olvera, Miguel Hernández, Mónica Lara & Rafel Rojas.", SwingConstants.CENTER);
+    JLabel labelExplicacion = new JLabel("<html><p>Este programa muestra la funcionalidad de los métodos más usados para la generación de números random. " +
+            "Se encuentra el Método de los Centros Cuadrados, Congruencial, Congruencial Mixto c/ validación HULL-DOBELL, Generador Multiplicativo y Congruencial Lineal. " +
+            "Los casos MC, MCM y GM cuentan con la opción de validación de Chi-Cuadrada y Kolmogorov-Smirnov.</p></html>");
     JButton congruenciaL= new JButton("Congruencia Lineal");
     JButton congruenciaM= new JButton("Congruencia Mixto");
     JButton rafa= new JButton("El de rafa");
@@ -42,7 +45,8 @@ public class Page {
         tituloNumeros.setFont(new Font("Helvetica Neue", Font.BOLD, 16));
         labelEquipo.setBounds(80,710,800,100);
         labelEquipo.setFont(new Font("Helvetica Neue", Font.ITALIC, 14));
-
+        labelExplicacion.setBounds(70,180,400,300);
+        labelExplicacion.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 
         // Buttons
         congruenciaL.setBounds(700,310,200, 50);
@@ -67,6 +71,7 @@ public class Page {
         frameInicial.add(tituloProyecto);
         frameInicial.add(tituloNumeros);
         frameInicial.add(labelEquipo);
+        frameInicial.add(labelExplicacion);
 
         //Full page
         frameInicial.setSize(1000,1000);//400 width and 500 height

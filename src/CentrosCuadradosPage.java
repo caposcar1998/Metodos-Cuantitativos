@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class CentrosCuadradosPage  {
 
-
     JFrame frameCentrosCuadrados = new JFrame();
     JButton ejecutarCC = new JButton("Ejecutar");
     JButton regresar = new JButton("Regresar");
@@ -30,6 +29,7 @@ public class CentrosCuadradosPage  {
         tituloCC.setBounds(100,0,200,100);
         semillaCcPoner.setBounds(100,125,200,40);
         iteracionCcPoner.setBounds(100,225,200,40);
+        regresar.setBounds(10, 10, 80, 30);
 
         //Tabla
         model.addColumn("No. iteración");
@@ -49,6 +49,7 @@ public class CentrosCuadradosPage  {
         frameCentrosCuadrados.add(semillaCcPoner);
         frameCentrosCuadrados.add(iteracionCcPoner);
         frameCentrosCuadrados.add(table);
+        frameCentrosCuadrados.add(regresar);
 
         ejecutarCC.addActionListener(new ActionListener() {
             @Override
@@ -65,7 +66,8 @@ public class CentrosCuadradosPage  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameCentrosCuadrados.setVisible(false);
-
+                Page pg = new Page();
+                pg.run();
             }
         });
     }
