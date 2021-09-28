@@ -121,6 +121,16 @@ public class ChiCuadrada {
         System.out.println("classes " + classes);
         System.out.println("De tabla: " + new ChiSquareTest().chiSquare(expected, observed));
         System.out.println("Calculado: " + chiSquare);
+        System.out.print("Expected: ");
+        for (int i = 0; i < expected.length; i++) {
+            System.out.print(expected[i] + " ");
+        }
+        System.out.println();
+        System.out.print("observed: ");
+        for (int i = 0; i < observed.length; i++) {
+            System.out.print(observed[i] + " ");
+        }
+        System.out.println();
         return chiSquare;
     }
 
