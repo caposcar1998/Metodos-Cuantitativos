@@ -9,8 +9,8 @@ public class GeneradorMultiplicativo {
         this.m = m;
     }
 
-    public void run(){
-        System.out.println("Resultado: " + result(8));
+    public void run(int iterations){
+        System.out.println("Resultado: " + result(iterations));
     }
 
     public ArrayList<RandomNumber> result(int iterations) {

@@ -44,9 +44,8 @@ public class CongruencialMixto {
         this.m = m;
     }
 
-    public List<Double> run() {
-        System.out.println("Hull-Dobell: " + checkHullDobell());
-        return generate(8).stream().map(randomNumber -> randomNumber.actualRandomNum).collect(Collectors.toList());
+    public List<Double> run(int iterations) {
+        return generate(iterations).stream().map(randomNumber -> randomNumber.actualRandomNum).collect(Collectors.toList());
     }
 
     public ArrayList<RandomNumber> generate(int iterations) {

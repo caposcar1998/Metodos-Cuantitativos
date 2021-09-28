@@ -10,8 +10,8 @@ public class CongruenciaLineal {
         this.m = m;
     }
 
-    public void run(){
-        System.out.println("Resultado: " + generate(8));
+    public void run(int iterations){
+        System.out.println("Resultado: " + generate(iterations));
     }
 
     public ArrayList<RandomNumber> generate(int iterations) {

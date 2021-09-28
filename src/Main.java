@@ -10,18 +10,19 @@ public class Main {
         cc.run();
         System.out.println("Congruencia lineal");
         CongruenciaLineal cl = new CongruenciaLineal(4, 5, 7, 8);
-        cl.run();
+        cl.run(8);
         System.out.println("Congruencia mixta");
         CongruencialMixto cm = new CongruencialMixto(4, 5, 7, 8);
-        cm.run();
+        System.out.println("Hull-Dobell: " + cm.checkHullDobell());
+        cm.run(8);
         */
         Page pg = new Page();
         pg.run();
 
-/*
+        /*
         System.out.println("Generador Multiplicativo");
         GeneradorMultiplicativo gm = new GeneradorMultiplicativo(5, 5, 32);
-        gm.run();
+        gm.run(8);
 
         Double[] testChi = {
                 0.411,0.11,0.191,0.037,0.12,0.575,0.73,
