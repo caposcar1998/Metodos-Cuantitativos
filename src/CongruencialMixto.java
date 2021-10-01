@@ -44,8 +44,8 @@ public class CongruencialMixto {
         this.m = m;
     }
 
-    public List<Double> run(int iterations) {
-        return generate(iterations).stream().map(randomNumber -> randomNumber.actualRandomNum).collect(Collectors.toList());
+    public ArrayList<RandomNumber> run(int iterations) {
+        return generate(iterations);
     }
 
     public ArrayList<RandomNumber> generate(int iterations) {
