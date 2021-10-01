@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import static javax.swing.JOptionPane.showMessageDialog;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +33,7 @@ public class CongruencialMixtoPage {
         frameCongruencialMixtoPage.setLayout(null);
         frameCongruencialMixtoPage.setVisible(false);
 
-        ejecutarGM.setBounds(100,525,200,40);
+        ejecutarGM.setBounds(100,575,200,40);
         regresar.setBounds(10, 10, 80, 30);
         tituloGM.setBounds(100,15,200,100);
         tituloGM.setFont(new Font("Helvetica Neue", Font.BOLD, 16));
@@ -142,11 +143,34 @@ public class CongruencialMixtoPage {
         frameCongruencialMixtoPage.add(cGMPoner);
 
         ejecutarGM.addActionListener(e -> {
-            CongruencialMixto gm = new CongruencialMixto(Integer.parseInt(semillaGMPoner.getText()),Integer.parseInt(aGMPoner.getText()), Integer.parseInt(cGMPoner.getText()), Integer.parseInt(mGMPoner.getText()));
+            CongruencialMixto gm = null;
+            try {
+            gm = new CongruencialMixto(Integer.parseInt(semillaGMPoner.getText()),Integer.parseInt(aGMPoner.getText()), Integer.parseInt(cGMPoner.getText()), Integer.parseInt(mGMPoner.getText()));
+            } catch (Exception ex) {
+                showMessageDialog(null, "Favor de llenar todos los campos");
+            }
+
+            ArrayList<String> hullDobell = gm.checkHullDobell();
+            StringBuilder hdString = new StringBuilder();
+            for(String cond: hullDobell)
+            {
+                hdString.append("\n");
+                hdString.append(cond);
+            }
             resultado = gm.run(Integer.parseInt(iteracionGMPoner.getText()));
+            if (hullDobell.size() != 0) {
+                int hdAlert = JOptionPane.showConfirmDialog(
+                    null, "No cumple con el Teorema de Hull Dobell:" + hdString.toString() ,
+                    "Seguro que deseas continuar?",
+                    JOptionPane.YES_NO_OPTION);
+                if (hdAlert == JOptionPane.NO_OPTION || hdAlert == JOptionPane.CLOSED_OPTION) {
+                    resultado = new ArrayList<>();
+                }
+            }
             for (RandomNumber valor: resultado) {
                 model.addRow(new Object[]{valor.iteration,valor.seed,valor.randomNum,valor.actualRandomNum});
             }
+
         });
 
         regresar.addActionListener(e -> {
@@ -161,6 +185,4 @@ public class CongruencialMixtoPage {
     public void setVisible(){
         frameCongruencialMixtoPage.setVisible(true);
     }
-
-
 }
