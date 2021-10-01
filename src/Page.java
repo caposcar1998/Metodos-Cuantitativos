@@ -8,6 +8,7 @@ public class Page {
     JFrame frameInicial=new JFrame("GENERADORES DE NUMEROS RANDOM");//creating instance of JFrame
     CentrosCuadradosPage ccp = new CentrosCuadradosPage();
     GeneradorMultiplicativoPage gmp = new GeneradorMultiplicativoPage();
+    CongruencialMixtoPage cmp = new CongruencialMixtoPage();
     JButton centrosC=new JButton("Centros Cuadrados");//creating instance of JButton
     JLabel tituloInicial= new JLabel("Tecnológico de Monterrey", SwingConstants.CENTER);
     JLabel tituloProyecto= new JLabel("Proyecto 1 - Métodos Cuantitativos y Simulación", SwingConstants.CENTER);
@@ -52,6 +53,15 @@ public class Page {
         congruenciaL.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         congruenciaM.setBounds(700,370,200, 50);
         congruenciaM.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
+        cmp.run();
+        congruenciaM.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameInicial.setVisible(false);
+                cmp.setVisible();
+            }
+        });
+
         rafa.setBounds(700,430,200, 50);
         rafa.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
 
