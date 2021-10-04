@@ -9,9 +9,7 @@ public class GeneradorMultiplicativo {
         this.m = m;
     }
 
-    public void run(){
-        System.out.println("Resultado: " + result(8));
-    }
+    public ArrayList<RandomNumber> run(int iterations){ return result(iterations);}
 
     public ArrayList<RandomNumber> result(int iterations) {
         ArrayList<RandomNumber> randomNums = new ArrayList<>();
@@ -21,7 +19,7 @@ public class GeneradorMultiplicativo {
             randomNumber.setIteration(i);
             int generator = (a * seed) % m;
             randomNumber.setRandomNum(generator);
-            randomNumber.setActualRandomNum(generator / Double.valueOf(m));
+            randomNumber.setActualRandomNum(generator / (double) m);
             seed = generator;
             randomNums.add(randomNumber);
         }
