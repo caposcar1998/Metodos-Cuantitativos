@@ -31,7 +31,7 @@ public class CentrosCuadrados {
                 ran.setRandomNum(generator);
                 //Se obtiene random
                 //Largos de semillas y de generador
-                sizeSeed = Integer.toString(seed).length();
+                sizeSeed = 4;
                 sizeGenerator = Integer.toString(generator).length();
                 //Se restan y se dividen entre 2
                 //Se obtienen numeros a eliminar al inicio, se obtiene la dif entre generador y semilla y se divide entre 2
