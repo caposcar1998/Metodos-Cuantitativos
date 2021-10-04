@@ -18,6 +18,7 @@ public class CentrosCuadradosPage  {
     JLabel iteracionCcTexto = new JLabel("Ingresa las iteraciones");
     DefaultTableModel model = new DefaultTableModel();
     JTable table = new JTable(model);
+    JScrollPane scroll_table = new JScrollPane(table);
     ArrayList<RandomNumber> resultado = new ArrayList<>();
 
     public void run(){
@@ -66,9 +67,8 @@ public class CentrosCuadradosPage  {
         model.addColumn("Semilla");
         model.addColumn("No. aleatorio");
         model.addColumn("Aleatorio real");
-        table.setBounds(400,100,500,700);
-        DefaultTableModel model1 = (DefaultTableModel) table.getModel();
-        model.addRow(new Object[]{"No. iteración", "Semilla", "No. aleatorio", "Aleatorio real"});
+        scroll_table.setBounds(400,100,500,700);
+
 
 
 
@@ -78,7 +78,7 @@ public class CentrosCuadradosPage  {
         frameCentrosCuadrados.add(iteracionCcTexto);
         frameCentrosCuadrados.add(semillaCcPoner);
         frameCentrosCuadrados.add(iteracionCcPoner);
-        frameCentrosCuadrados.add(table);
+        frameCentrosCuadrados.add(scroll_table);
         frameCentrosCuadrados.add(regresar);
 
         ejecutarCC.addActionListener(new ActionListener() {
