@@ -24,6 +24,8 @@ public class GeneradorMultiplicativoPage {
     DefaultTableModel model = new DefaultTableModel();
     JTable table = new JTable(model);
     ArrayList<RandomNumber> resultado = new ArrayList<>();
+    //Scroll
+    JScrollPane scroll_table = new JScrollPane(table);
 
     public void run(){
         frameGeneradorMultiplicativo.setSize(1000,1000);
@@ -104,9 +106,7 @@ public class GeneradorMultiplicativoPage {
         model.addColumn("Semilla");
         model.addColumn("No. aleatorio");
         model.addColumn("Aleatorio real");
-        table.setBounds(400,100,500,700);
-        DefaultTableModel model1 = (DefaultTableModel) table.getModel();
-        model.addRow(new Object[]{"No. iteración", "Semilla", "No. aleatorio", "Aleatorio real"});
+        scroll_table.setBounds(400,100,500,700);
 
         frameGeneradorMultiplicativo.add(ejecutarGM);
         frameGeneradorMultiplicativo.add(tituloGM);
@@ -114,12 +114,12 @@ public class GeneradorMultiplicativoPage {
         frameGeneradorMultiplicativo.add(iteracionGMTexto);
         frameGeneradorMultiplicativo.add(semillaGMPoner);
         frameGeneradorMultiplicativo.add(iteracionGMPoner);
-        frameGeneradorMultiplicativo.add(table);
         frameGeneradorMultiplicativo.add(regresar);
         frameGeneradorMultiplicativo.add(aGMTexto);
         frameGeneradorMultiplicativo.add(aGMPoner);
         frameGeneradorMultiplicativo.add(mGMTexto);
         frameGeneradorMultiplicativo.add(mGMPoner);
+        frameGeneradorMultiplicativo.add(scroll_table);
 
         ejecutarGM.addActionListener(e -> {
             GeneradorMultiplicativo gm = new GeneradorMultiplicativo(Integer.parseInt(semillaGMPoner.getText()),Integer.parseInt(aGMPoner.getText()), Integer.parseInt(mGMPoner.getText()));
