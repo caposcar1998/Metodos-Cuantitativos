@@ -14,14 +14,16 @@ public class CentrosCuadradosPage  {
     JButton ejecutarCC = new JButton("Ejecutar");
     JButton regresar = new JButton("Regresar");
     JButton ejecutarChi = new JButton("Calcular chi cuadrada");
+    JButton ejecutarKolmogorov = new JButton("Calcular Komogorov");
     JLabel semillaCcTexto = new JLabel("Ingresa tu semilla");
     JLabel tituloCC= new JLabel("Centros Cuadrados");
     JLabel tituloChiCuadrada = new JLabel("Chi cuadrada");
+    JLabel iteracionCcTexto = new JLabel("Ingresa las iteraciones");
+    JLabel textoChiCuadrada = new JLabel("Significancia");
+    JLabel tituloKolmogorov = new JLabel("Kolmogorov-Smirnov");
     JTextField chiPoner = new JTextField();
     JTextField semillaCcPoner = new JTextField();
     JTextField iteracionCcPoner = new JTextField();
-    JLabel iteracionCcTexto = new JLabel("Ingresa las iteraciones");
-    JLabel textoChiCuadrada = new JLabel("Valor");
     DefaultTableModel model = new DefaultTableModel();
     JTable table = new JTable(model);
     JScrollPane scroll_table = new JScrollPane(table);
@@ -43,12 +45,13 @@ public class CentrosCuadradosPage  {
         frameCentrosCuadrados.add(regresar);
         frameCentrosCuadrados.add(chiPoner);
         frameCentrosCuadrados.add(textoChiCuadrada);
-
+        frameCentrosCuadrados.add(tituloKolmogorov);
+        frameCentrosCuadrados.add(ejecutarKolmogorov);
         frameCentrosCuadrados.add(tituloChiCuadrada);
         frameCentrosCuadrados.add(ejecutarChi);
 
 
-        ejecutarCC.setBounds(100,350,200,40);
+        ejecutarCC.setBounds(100,300,200,40);
         semillaCcTexto.setBounds(100,100,200,40);
         iteracionCcTexto.setBounds(100,200,200,40);
         tituloCC.setBounds(100,0,200,100);
@@ -59,7 +62,8 @@ public class CentrosCuadradosPage  {
         textoChiCuadrada.setBounds(100,450,200,40);
         chiPoner.setBounds(100,500,200,40);
         ejecutarChi.setBounds(100, 550,200,40);
-
+        tituloKolmogorov.setBounds(100,650,200,40);
+        ejecutarKolmogorov.setBounds(100,700,200,40);
 
         semillaCcPoner.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
@@ -143,6 +147,20 @@ public class CentrosCuadradosPage  {
                 }
 
 
+            }
+        });
+
+        ejecutarKolmogorov.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<Double> kList=new ArrayList<Double>();
+                for (RandomNumber valor: resultado) {
+                    kList.add(valor.actualRandomNum);
+                }
+                KolmogorovSmirnov ks = new KolmogorovSmirnov(kList);
+                ks.run();
+                System.out.println(ks.getDMinus());
+                System.out.println(ks.getDPlus());
             }
         });
 
