@@ -30,11 +30,11 @@ public class KolmogorovSmirnov {
         this.sortedNums = sortedNums;
     }
 
-    public double getDPlus() {return dPlus};
+    public double getDPlus() {return dPlus;};
 
     public void setdPlus(double dPlus) { this.dPlus = dPlus; }
 
-    public double getDMinus() {return dMinus};
+    public double getDMinus() {return dMinus;};
 
     public void setdMinus(double dMinus) { this.dMinus = dMinus; }
 
