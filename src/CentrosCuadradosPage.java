@@ -159,8 +159,7 @@ public class CentrosCuadradosPage  {
                 }
                 KolmogorovSmirnov ks = new KolmogorovSmirnov(kList);
                 ks.run();
-                System.out.println(ks.getDMinus());
-                System.out.println(ks.getDPlus());
+                JOptionPane.showMessageDialog(null, "D+: "+ ks.getDPlus()+ "\n" + "D-: "+ ks.getDMinus()  );
             }
         });
 
