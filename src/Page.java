@@ -9,6 +9,7 @@ public class Page {
     CentrosCuadradosPage ccp = new CentrosCuadradosPage();
     GeneradorMultiplicativoPage gmp = new GeneradorMultiplicativoPage();
     CongruencialMixtoPage cmp = new CongruencialMixtoPage();
+    CongruenciaLinealPage clp = new CongruenciaLinealPage();
     JButton centrosC=new JButton("Centros Cuadrados");//creating instance of JButton
     JLabel tituloInicial= new JLabel("Tecnológico de Monterrey", SwingConstants.CENTER);
     JLabel tituloProyecto= new JLabel("Proyecto 1 - Métodos Cuantitativos y Simulación", SwingConstants.CENTER);
@@ -51,6 +52,14 @@ public class Page {
         // Buttons
         congruenciaL.setBounds(700,310,250, 50);
         congruenciaL.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
+        clp.run();
+        congruenciaL.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameInicial.setVisible(false);
+                clp.setVisible();
+            }
+        });
         congruenciaM.setBounds(700,370,250, 50);
         congruenciaM.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         cmp.run();
