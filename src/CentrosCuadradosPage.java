@@ -136,10 +136,10 @@ public class CentrosCuadradosPage  {
                     ChiCuadrada chi = new ChiCuadrada(chiList, chiValue);
                     double chiSquare = chi.run();
                     if (chiSquare < chi.getChiSquareFromTable()) {
-                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se acepta hipótesis nula");
+                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se acepta hipótesis nula, con valor de: "+ chiSquare + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
                         chiPoner.setText("");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se rechaza hipótesis nula");
+                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se rechaza hipótesis nula, con valor de: "+ chiSquare  + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
                         chiPoner.setText("");
                     }
                 }else{
