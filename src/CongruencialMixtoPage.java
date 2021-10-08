@@ -54,7 +54,6 @@ public class CongruencialMixtoPage {
                 int l = value.length();
                 if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     semillaGMPoner.setEditable(true);
-                    semillaGMTexto.setText("");
                 } else {
                     semillaGMPoner.setEditable(false);
                     semillaGMTexto.setText("* Enter only numeric digits(0-9)");
@@ -68,7 +67,6 @@ public class CongruencialMixtoPage {
                 int l = value.length();
                 if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     iteracionGMPoner.setEditable(true);
-                    iteracionGMTexto.setText("");
                 } else {
                     iteracionGMPoner.setEditable(false);
                     iteracionGMTexto.setText("* Enter only numeric digits(0-9)");
@@ -82,7 +80,6 @@ public class CongruencialMixtoPage {
                 int l = value.length();
                 if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     aGMPoner.setEditable(true);
-                    aGMTexto.setText("");
                 } else {
                     aGMPoner.setEditable(false);
                     aGMTexto.setText("* Enter only numeric digits(0-9)");
@@ -96,7 +93,6 @@ public class CongruencialMixtoPage {
                 int l = value.length();
                 if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     mGMPoner.setEditable(true);
-                    mGMTexto.setText("");
                 } else {
                     mGMPoner.setEditable(false);
                     mGMTexto.setText("* Enter only numeric digits(0-9)");
@@ -110,7 +106,6 @@ public class CongruencialMixtoPage {
                 int l = value.length();
                 if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9' || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     cGMPoner.setEditable(true);
-                    cGMTexto.setText("");
                 } else {
                     cGMPoner.setEditable(false);
                     cGMTexto.setText("* Enter only numeric digits(0-9)");
