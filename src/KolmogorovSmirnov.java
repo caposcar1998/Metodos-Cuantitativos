@@ -8,10 +8,14 @@ public class KolmogorovSmirnov {
     private ArrayList<Double> sortedNums;
     private double dPlus, dMinus;
 
-    private double[] iM1, iM2, iM3, iM4 = new double[nums.size()];
+    private double[] iM1, iM2, iM3, iM4;
 
     public KolmogorovSmirnov(List<Double> nums) {
         this.nums = nums;
+        iM1 = new double[nums.size()];
+        iM2 = new double[nums.size()];
+        iM3 = new double[nums.size()];
+        iM4 = new double[nums.size()];
     }
 
     public List<Double> getNums() {
@@ -30,11 +34,11 @@ public class KolmogorovSmirnov {
         this.sortedNums = sortedNums;
     }
 
-    public double getDPlus() {return dPlus};
+    public double getDPlus() {return dPlus; }
 
     public void setdPlus(double dPlus) { this.dPlus = dPlus; }
 
-    public double getDMinus() {return dMinus};
+    public double getDMinus() {return dMinus; }
 
     public void setdMinus(double dMinus) { this.dMinus = dMinus; }
 
@@ -43,7 +47,7 @@ public class KolmogorovSmirnov {
         Collections.sort(sortedNums);
         for (int i=0; i< nums.size(); i++){
             iM1[i] = sortedNums.get(i);
-            iM2[i] = i / sortedNums.size();
+            iM2[i] = (double) (i+1) / sortedNums.size();
             iM3[i] = Math.abs(iM2[i]-iM1[i]);
             if(i == 0){
                 //Caso para el primer renglón de la tabla

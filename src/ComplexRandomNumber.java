@@ -56,8 +56,10 @@ public class ComplexRandomNumber {
     public String toString() {
         return "RandomNumber{" +
                 "iteration=" + iteration +
-                ", seed=" + seed +
-                ", randomNum=" + randomNum +
+                ", seed1=" + seed1 +
+                ", seed2=" + seed2 +
+                ", randomNum1=" + randomNum1 +
+                ", randomNum2=" + randomNum2 +
                 ", actualRandomNum=" + actualRandomNum +
                 '}';
     }
