@@ -64,7 +64,7 @@ public class ChiCuadrada {
 
         double range = sortedNums.get(sortedNums.size() - 1) - sortedNums.get(0);
         double k = Math.floor(1 + (3.222 * Math.log10(nums.size())));
-        double classRange = (double) Math.round(100 * range / k) / 100;
+        double classRange = (double) Math.ceil(100 * range / k) / 100;
 
         ArrayList<ChiCuadradaClaseK> classes = new ArrayList<>();
 
@@ -105,6 +105,7 @@ public class ChiCuadrada {
             feEsperado = nums.size() * (cc.getClassEnd() - cc.getClassStart());
             chiSquare += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
         }
+
         readCsv();
         int v = classes.size() - 1;
         chiSquareFromTable = chiSquareTable.get(significance).get(v);
@@ -115,6 +116,9 @@ public class ChiCuadrada {
     public int countItemsInClassRange(double start, double end) {
         int count = 0;
         for (double num : sortedNums) {
+            if (start == 0 && num == 0) {
+                count++;
+            }
             if (num > start && num <= end) {
                 count++;
             }
