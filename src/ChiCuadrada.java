@@ -107,8 +107,11 @@ public class ChiCuadrada {
         }
         readCsv();
         int v = classes.size() - 1;
-        chiSquareFromTable = chiSquareTable.get(significance).get(v);
-
+        try {
+            chiSquareFromTable = chiSquareTable.get(significance).get(v);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("La significacia no existe");
+        }
         return chiSquare;
     }
 
