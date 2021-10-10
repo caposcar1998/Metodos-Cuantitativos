@@ -161,7 +161,7 @@ public class CongruencialLinealCombinadoPage {
         ejecutarGM.addActionListener(e -> {
             CongruencialLinealCombinado lm = null;
             try {
-                lm = new CongruencialLinealCombinado(Integer.parseInt(aGMPoner.getText()),Integer.parseInt(mGMPoner.getText()), Integer.parseInt(a2GMPoner.getText()), Integer.parseInt(m2GMPoner.getText()));
+                lm = new CongruencialLinealCombinado(Double.parseDouble(aGMPoner.getText()),Double.parseDouble(mGMPoner.getText()), Double.parseDouble(a2GMPoner.getText()), Double.parseDouble(m2GMPoner.getText()));
             } catch (Exception ex) {
                 showMessageDialog(null, "Favor de llenar todos los campos");
             }
