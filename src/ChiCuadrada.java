@@ -106,7 +106,11 @@ public class ChiCuadrada {
         try {
             chiSquareFromTable = chiSquareTable.get(significance).get(v);
         } catch (Exception e) {
-            throw new IllegalArgumentException("La significacia no existe");
+            String message = "La significacia no existe";
+            if (v < 2) {
+                message = "Por favor genera al menos dos clases K";
+            }
+            throw new IllegalArgumentException(message);
         }
         return chiSquare;
     }
