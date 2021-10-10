@@ -17,7 +17,7 @@ public class CongruencialLinealCombinado {
         for (int i = 0; i < iterations; i++) {
             ComplexRandomNumber randomNumber = new ComplexRandomNumber();
             if(i == 0){
-                double seed = m1-1/m1;
+                double seed = (double)m1-1/m1;
                 randomNumber.setSeed1(seed);
                 randomNumber.setSeed2(seed);
             }

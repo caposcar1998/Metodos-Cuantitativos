@@ -10,17 +10,18 @@ public class Page {
     GeneradorMultiplicativoPage gmp = new GeneradorMultiplicativoPage();
     CongruencialMixtoPage cmp = new CongruencialMixtoPage();
     CongruenciaLinealPage clp = new CongruenciaLinealPage();
+    CongruencialLinealCombinadoPage clcp = new CongruencialLinealCombinadoPage();
     JButton centrosC=new JButton("Centros Cuadrados");//creating instance of JButton
     JLabel tituloInicial= new JLabel("Tecnológico de Monterrey", SwingConstants.CENTER);
     JLabel tituloProyecto= new JLabel("Proyecto 1 - Métodos Cuantitativos y Simulación", SwingConstants.CENTER);
     JLabel tituloNumeros = new JLabel("Simulador de Números Random", SwingConstants.CENTER);
     JLabel labelEquipo = new JLabel("Miembros del equipo: Oscar Contreras, Jorge Akio Olvera, Miguel Hernández, Mónica Lara & Rafel Rojas.", SwingConstants.CENTER);
     JLabel labelExplicacion = new JLabel("<html><p>Este programa muestra la funcionalidad de los métodos más usados para la generación de números random. " +
-            "Se encuentra el Método de los Centros Cuadrados, Congruencial, Congruencial Mixto c/ validación HULL-DOBELL, Generador Multiplicativo y Congruencial Lineal. " +
+            "Se encuentra el Método de los Centros Cuadrados, Congruencial Lineal, Congruencial Mixto c/ validación HULL-DOBELL, Generador Multiplicativo y Congruencial Lineal Combinado. " +
             "Los casos MC, MCM y GM cuentan con la opción de validación de Chi-Cuadrada y Kolmogorov-Smirnov.</p></html>");
     JButton congruenciaL= new JButton("Congruencia Lineal");
     JButton congruenciaM= new JButton("Congruencia Mixto");
-    JButton rafa= new JButton("El de rafa");
+    JButton congruencialLC= new JButton("Congruencial Lineal Combinado");
     JButton generadorM= new JButton("Generador Multiplicativo");
 
     public void run(){
@@ -71,8 +72,16 @@ public class Page {
             }
         });
 
-        rafa.setBounds(700,430,250, 50);
-        rafa.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
+        congruencialLC.setBounds(700,430,250, 50);
+        congruencialLC.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
+        clcp.run();
+        congruencialLC.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                frameInicial.setVisible(false);
+                clcp.setVisible();
+            }
+        });
 
         generadorM.setBounds(700,490,250, 50);
         generadorM.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
@@ -89,7 +98,7 @@ public class Page {
         frameInicial.add(centrosC);//adding button in JFrame
         frameInicial.add(congruenciaL);
         frameInicial.add(congruenciaM);
-        frameInicial.add(rafa);
+        frameInicial.add(congruencialLC);
         frameInicial.add(generadorM);
         frameInicial.add(tituloInicial);
         frameInicial.add(tituloProyecto);
