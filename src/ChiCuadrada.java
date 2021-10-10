@@ -92,12 +92,7 @@ public class ChiCuadrada {
             }
         } while (classWithLessThan5 != -1 && classWithLessThan5 != 0);
 
-        // Ultima clase por revisar
-        if (classWithLessThan5 == 0) {
-            ChiCuadradaClaseK merged = mergeClasses(classes.get(0), classes.get(1));
-            classes = reassignClasses(classes, merged, 0, 1);
-        }
-
+        
         // Mismo feEsperado para todos, porque es una distrib uniforme
         double feEsperado;
         chiSquare = 0;
