@@ -107,7 +107,7 @@ public class ChiCuadrada {
             chiSquareFromTable = chiSquareTable.get(significance).get(v);
         } catch (Exception e) {
             String message = "La significacia no existe";
-            if (v < 2) {
+            if (v < 1) {
                 message = "Por favor genera al menos dos clases K";
             }
             throw new IllegalArgumentException(message);
