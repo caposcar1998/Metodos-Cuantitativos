@@ -1,10 +1,9 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.*;
 
 public class ChiCuadrada {
     private List<Double> nums;
@@ -164,8 +163,19 @@ public class ChiCuadrada {
 
     public void readCsv() {
         try {
-            Scanner sc = new Scanner(new File("src/chi-square-table.csv"));
-            sc.useDelimiter(",");
+            StringBuilder result = new StringBuilder();
+            URL url = new URL("https://gist.githubusercontent.com/Akio789/c23df307717f76f77e191813fae3104e/raw/7fb85a2afaedde38b2c017ff17399d2ff8af32ba/chiSquareTable.csv");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()))) {
+                for (String line; (line = reader.readLine()) != null; ) {
+                    result.append(line);
+                }
+            }
+
+            ArrayList<String> rawCsv = new ArrayList(Arrays.asList(result.toString().split("-")));
+
             chiSquareTable = new HashMap<>();
             ArrayList<Double> headerHelper = new ArrayList<>();
 
@@ -177,7 +187,8 @@ public class ChiCuadrada {
                 ...
             }
              */
-            String headers = sc.nextLine();
+
+            String headers = rawCsv.get(0);
             for (String col: headers.split(",")) {
                 try{
                     chiSquareTable.put(Double.parseDouble(col), new HashMap<>());
@@ -196,9 +207,12 @@ public class ChiCuadrada {
             }
              */
             int i = 0;
-            while (sc.hasNextLine()) {
-                int degreeOfFreedom = sc.nextInt();
-                for (String cell: sc.nextLine().split(",")) {
+            for (int k = 1; k < 51; k++) {
+                String line = rawCsv.get(k);
+                String[] row = line.split(",");
+                int degreeOfFreedom = Integer.parseInt(row[0]);
+                for (int j = 1; j < 16; j++) {
+                    String cell = row[j];
                     try {
                         double targetSignificance = headerHelper.get(i);
                         chiSquareTable.get(targetSignificance).put(degreeOfFreedom, Double.parseDouble(cell));
@@ -209,7 +223,12 @@ public class ChiCuadrada {
                 }
                 i = 0;
             }
-        } catch (FileNotFoundException e) {
+
+        } catch (FileNotFoundException | MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
