@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Metodos-Cuantitativos:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Metodos_Cuantitativos_jar</output-path>
+    <root id="archive" name="Metodos-Cuantitativos.jar">
+      <element id="module-output" name="Metodos-Cuantitativos" />
+    </root>
+  </artifact>
+</component>
