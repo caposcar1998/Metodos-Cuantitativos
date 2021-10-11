@@ -45,7 +45,7 @@ public class CongruencialLinealCombinadoPage {
 
         ejecutarGM.setBounds(100,475,200,40);
         regresar.setBounds(10, 10, 100, 30);
-        tituloGM.setBounds(100,15,200,100);
+        tituloGM.setBounds(100,15,250,100);
         tituloGM.setFont(new Font("Helvetica Neue", Font.BOLD, 16));
         iteracionGMTexto.setBounds(100,100,200,40);
         iteracionGMPoner.setBounds(100,125,200,40);

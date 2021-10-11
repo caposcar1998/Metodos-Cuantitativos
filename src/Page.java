@@ -26,7 +26,7 @@ public class Page {
 
     public void run(){
 
-        centrosC.setBounds(700,250,250, 50);//x axis, y axis, width, height
+        centrosC.setBounds(700,250,260, 50);//x axis, y axis, width, height
         centrosC.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         ccp.run();
         centrosC.addActionListener(new ActionListener() {
@@ -51,7 +51,7 @@ public class Page {
         labelExplicacion.setFont(new Font("Helvetica Neue", Font.PLAIN, 15));
 
         // Buttons
-        congruenciaL.setBounds(700,310,250, 50);
+        congruenciaL.setBounds(700,310,260, 50);
         congruenciaL.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         clp.run();
         congruenciaL.addActionListener(new ActionListener() {
@@ -61,7 +61,7 @@ public class Page {
                 clp.setVisible();
             }
         });
-        congruenciaM.setBounds(700,370,250, 50);
+        congruenciaM.setBounds(700,370,260, 50);
         congruenciaM.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         cmp.run();
         congruenciaM.addActionListener(new ActionListener() {
@@ -72,7 +72,7 @@ public class Page {
             }
         });
 
-        congruencialLC.setBounds(700,430,250, 50);
+        congruencialLC.setBounds(700,430,260, 50);
         congruencialLC.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         clcp.run();
         congruencialLC.addActionListener(new ActionListener() {
@@ -83,7 +83,7 @@ public class Page {
             }
         });
 
-        generadorM.setBounds(700,490,250, 50);
+        generadorM.setBounds(700,490,260, 50);
         generadorM.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         gmp.run();
         generadorM.addActionListener(new ActionListener() {
