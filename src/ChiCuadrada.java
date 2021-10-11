@@ -63,8 +63,8 @@ public class ChiCuadrada {
         Collections.sort(sortedNums);
 
         double range = sortedNums.get(sortedNums.size() - 1) - sortedNums.get(0);
-        double k = Math.floor(1 + (3.222 * Math.log10(nums.size())));
-        double classRange = (double) Math.round(100 * range / k) / 100;
+        double k = Math.floor(1 + (3.322 * Math.log10(nums.size())));
+        double classRange = (double) Math.ceil(100 * range / k) / 100;
 
         ArrayList<ChiCuadradaClaseK> classes = new ArrayList<>();
 
@@ -92,12 +92,7 @@ public class ChiCuadrada {
             }
         } while (classWithLessThan5 != -1 && classWithLessThan5 != 0);
 
-        // Ultima clase por revisar
-        if (classWithLessThan5 == 0) {
-            ChiCuadradaClaseK merged = mergeClasses(classes.get(0), classes.get(1));
-            classes = reassignClasses(classes, merged, 0, 1);
-        }
-
+        
         // Mismo feEsperado para todos, porque es una distrib uniforme
         double feEsperado;
         chiSquare = 0;
@@ -105,16 +100,27 @@ public class ChiCuadrada {
             feEsperado = nums.size() * (cc.getClassEnd() - cc.getClassStart());
             chiSquare += Math.pow(cc.getF0Abs() - feEsperado, 2) / feEsperado;
         }
+        
         readCsv();
         int v = classes.size() - 1;
-        chiSquareFromTable = chiSquareTable.get(significance).get(v);
-
+        try {
+            chiSquareFromTable = chiSquareTable.get(significance).get(v);
+        } catch (Exception e) {
+            String message = "La significacia no existe";
+            if (v < 1) {
+                message = "Por favor genera al menos dos clases K";
+            }
+            throw new IllegalArgumentException(message);
+        }
         return chiSquare;
     }
 
     public int countItemsInClassRange(double start, double end) {
         int count = 0;
         for (double num : sortedNums) {
+            if (start == 0 && num == 0) {
+                count++;
+            }
             if (num > start && num <= end) {
                 count++;
             }

@@ -166,13 +166,17 @@ public class GeneradorMultiplicativoPage {
                     }
                     Double chiValue = Double.parseDouble(chiPoner.getText());
                     ChiCuadrada chi = new ChiCuadrada(chiList, chiValue);
-                    double chiSquare = chi.run();
-                    if (chiSquare < chi.getChiSquareFromTable()) {
-                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se acepta hipótesis nula, con valor de: "+ chiSquare + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
-                        chiPoner.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se rechaza hipótesis nula, con valor de: "+ chiSquare  + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
-                        chiPoner.setText("");
+                    try {
+                        double chiSquare = chi.run();
+                        if (chiSquare < chi.getChiSquareFromTable()) {
+                            JOptionPane.showMessageDialog(null, "Chi cuadrada: Se acepta hipótesis nula, con valor de: "+ chiSquare + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
+                            chiPoner.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Chi cuadrada: Se rechaza hipótesis nula, con valor de: "+ chiSquare  + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
+                            chiPoner.setText("");
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Chi cuadrada tiene que tener un valor");

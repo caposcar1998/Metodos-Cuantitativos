@@ -3,6 +3,14 @@ public class ComplexRandomNumber {
     double actualRandomNum, randomNum1, randomNum2, seed1, seed2;
 
     public ComplexRandomNumber() { }
+    public ComplexRandomNumber(int iteration, double actualRandomNum, double randomNum1, double randomNum2, double seed1, double seed2) {
+        this.iteration = iteration;
+        this.actualRandomNum = actualRandomNum;
+        this.randomNum1 = randomNum1;
+        this.randomNum2 = randomNum2;
+        this.seed1 = seed1;
+        this.seed2 = seed2;
+    }
 
     public int getIteration() {
         return iteration;

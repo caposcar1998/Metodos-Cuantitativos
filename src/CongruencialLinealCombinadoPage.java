@@ -161,7 +161,7 @@ public class CongruencialLinealCombinadoPage {
         ejecutarGM.addActionListener(e -> {
             CongruencialLinealCombinado lm = null;
             try {
-                lm = new CongruencialLinealCombinado(Integer.parseInt(aGMPoner.getText()),Integer.parseInt(mGMPoner.getText()), Integer.parseInt(a2GMPoner.getText()), Integer.parseInt(m2GMPoner.getText()));
+                lm = new CongruencialLinealCombinado(Double.parseDouble(aGMPoner.getText()),Double.parseDouble(mGMPoner.getText()), Double.parseDouble(a2GMPoner.getText()), Double.parseDouble(m2GMPoner.getText()));
             } catch (Exception ex) {
                 showMessageDialog(null, "Favor de llenar todos los campos");
             }
@@ -190,13 +190,17 @@ public class CongruencialLinealCombinadoPage {
                     }
                     Double chiValue = Double.parseDouble(chiPoner.getText());
                     ChiCuadrada chi = new ChiCuadrada(chiList, chiValue);
-                    double chiSquare = chi.run();
-                    if (chiSquare < chi.getChiSquareFromTable()) {
-                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se acepta hipótesis nula, con valor de: "+ chiSquare  + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
-                        chiPoner.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Chi cuadrada: Se rechaza hipótesis nula, con valor de: "+ chiSquare  + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
-                        chiPoner.setText("");
+                    try {
+                        double chiSquare = chi.run();
+                        if (chiSquare < chi.getChiSquareFromTable()) {
+                            JOptionPane.showMessageDialog(null, "Chi cuadrada: Se acepta hipótesis nula, con valor de: "+ chiSquare + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
+                            chiPoner.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Chi cuadrada: Se rechaza hipótesis nula, con valor de: "+ chiSquare  + "\n" + "valor en la tabla: " + chi.getChiSquareFromTable());
+                            chiPoner.setText("");
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Chi cuadrada tiene que tener un valor");

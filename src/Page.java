@@ -15,7 +15,7 @@ public class Page {
     JLabel tituloInicial= new JLabel("Tecnológico de Monterrey", SwingConstants.CENTER);
     JLabel tituloProyecto= new JLabel("Proyecto 1 - Métodos Cuantitativos y Simulación", SwingConstants.CENTER);
     JLabel tituloNumeros = new JLabel("Simulador de Números Random", SwingConstants.CENTER);
-    JLabel labelEquipo = new JLabel("Miembros del equipo: Oscar Contreras, Jorge Akio Olvera, Miguel Hernández, Mónica Lara & Rafel Rojas.", SwingConstants.CENTER);
+    JLabel labelEquipo = new JLabel("Miembros del equipo: Oscar Contreras, Jorge Akio Olvera, Miguel Hernández, Mónica Lara & Rafael Rojas.", SwingConstants.CENTER);
     JLabel labelExplicacion = new JLabel("<html><p>Este programa muestra la funcionalidad de los métodos más usados para la generación de números random. " +
             "Se encuentra el Método de los Centros Cuadrados, Congruencial Lineal, Congruencial Mixto c/ validación HULL-DOBELL, Generador Multiplicativo y Congruencial Lineal Combinado. " +
             "Los casos MC, MCM y GM cuentan con la opción de validación de Chi-Cuadrada y Kolmogorov-Smirnov.</p></html>");
