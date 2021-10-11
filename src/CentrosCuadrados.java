@@ -35,10 +35,16 @@ public class CentrosCuadrados {
                 sizeGenerator = Integer.toString(generator).length();
                 //Se restan y se dividen entre 2
                 //Se obtienen numeros a eliminar al inicio, se obtiene la dif entre generador y semilla y se divide entre 2
+                try{
                 randomNumber = (sizeGenerator-sizeSeed)/2;
                 randomN = Integer.toString(generator);
-                //Al final se elimina lo que queda de quitar el inicio, esto con lo se que quito al inicio y lo que tiene que valer la siguiente semilla
-                randomNumberString = Integer.parseInt(randomN.substring(randomNumber,randomNumber+sizeSeed));
+
+                    //Al final se elimina lo que queda de quitar el inicio, esto con lo se que quito al inicio y lo que tiene que valer la siguiente semilla
+                    randomNumberString = Integer.parseInt(randomN.substring(randomNumber,randomNumber+sizeSeed));
+                } catch (Exception e) {
+
+                }
+
                 //Se obtiene Ri al dividir entre 10 mil
                 ran.setActualRandomNum((double)randomNumberString/10000);
                 //Se reasigna valor de la semilla

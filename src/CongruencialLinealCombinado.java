@@ -26,7 +26,11 @@ public class CongruencialLinealCombinado {
             randomNumber.setRandomNum1(generator);
             generator = (a2 * randomNumber.getSeed2()) % m2;
             randomNumber.setRandomNum2(generator);
-            randomNumber.setActualRandomNum(((randomNumber.getRandomNum1()- randomNumber.getRandomNum2())%(m1-1))/m1);
+            double tmp = (((randomNumber.getRandomNum1()- randomNumber.getRandomNum2())%(m1-1))/m1);
+            if (tmp < 0){
+                tmp = tmp * (-1);
+            }
+            randomNumber.setActualRandomNum(tmp);
             randomNums.add(new ComplexRandomNumber(i, randomNumber.getActualRandomNum(), randomNumber.getRandomNum1(), randomNumber.getRandomNum2(), randomNumber.getSeed1(), randomNumber.getSeed2()));
             randomNumber.setSeed1(randomNumber.getRandomNum1());
             randomNumber.setSeed2(randomNumber.getRandomNum2());
